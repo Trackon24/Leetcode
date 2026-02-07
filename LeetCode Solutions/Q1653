@@ -1,0 +1,20 @@
+class Solution {
+    public int minimumDeletions(String s) {
+        int acount=0;
+        int bcount=0;
+        
+        char[] st=s.toCharArray();
+        if(st.length==1)return 0;
+        for(int i=0;i<st.length;i++){
+            if(st[i]=='a')acount++;
+        }
+        int min=acount;
+        if(acount==0)return 0;
+        for(int i=0;i<st.length;i++){
+            if(st[i]=='a')acount--;
+            if(st[i]=='b')bcount++;
+            min=Math.min(min,bcount+acount);
+        }
+        return min;
+    }
+}
